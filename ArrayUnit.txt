@@ -1,0 +1,70 @@
+﻿unit ArrayUnit;
+interface
+type
+marr = array[1..100] of Integer;
+arrReal = array[1..100] of Real;
+//создам процедуру что запоняет массив до индекса
+procedure arrayFillRandom(var a:marr;Index:integer);
+//создам функцию что возвращает сумму элементов до индекса
+function arraySumIndex(const a:marr;Index:integer):integer;
+//процедура вывода массива в файл до индекса(n)
+procedure arrayRecIndex(var f:Text;const a:marr;Index:integer);
+//процедура ручного заполнения массива пользователя до индекса(n)
+procedure arrFillIndex(var a:marr;Index:integer);
+//Процедура которая выводит индекс массива в файл
+procedure arrTfIndex(var f:Text;var a:marr;Index:integer);
+
+implementation
+//создам процедуру что запоняет массив до индекса
+
+procedure arrayFillRandom(var a:marr;Index:integer);
+
+begin
+  
+  for var i:=1 to Index do
+    a[i] := random(1,10);
+ 
+end;
+
+//создам функцию что возвращает сумму элементов до индекса
+
+function arraySumIndex(const a:marr;Index:integer):integer;
+var solution:integer;
+
+begin
+  
+  for var i:=1 to Index do
+    solution += a[i];
+  
+  arraySumIndex := solution;
+  
+end;
+
+//процедура вывода массива в файл до индекса(n)
+procedure arrayRecIndex(var f:Text;const a:marr;Index:integer);
+begin
+  Append(f);
+  for var i:=1 to Index do writeln(f,'arr[',i,']: ',a[i]);
+  close(f);
+end;
+
+//процедура ручного заполнения массива пользователя до индекса(n)
+procedure arrFillIndex(var a:marr;Index:integer);
+begin
+  for var i:=1 to Index do
+  begin
+    writeln('Enter array[',i,']: ');
+    readln(a[i]);
+  end;
+end;
+
+//Процедура которая выводит индекс массива в файл
+procedure arrTfIndex(var f:Text;var a:marr;Index:integer);
+begin
+  Append(f);
+  Writeln(f,'Required element in array[',Index,']');
+  Close(f);
+end;
+
+
+end.

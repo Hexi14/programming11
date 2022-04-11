@@ -1,0 +1,85 @@
+﻿unit TextOutUnit;
+
+interface
+
+//Процедура для вывода текста в файл
+procedure tfOutAppend(var f:Text;var s:string);
+//Процедура для вывода ввода пользователя в файл
+procedure tfOutUserInput(var f:Text;var Input:Integer);
+//Процедура для вывода ввода пользователя в файл типа real
+procedure tfOutUserInput(var f:Text;var Input:Real);
+//Процедура для вывода текста и переменной в файл
+procedure tfOutAppendVar(var f:Text;var s:string;var variable:real);
+//Процедура для вывода текста и переменной в файл(int)
+procedure tfOutAppendVar(var f:Text;var s:string;var variable:integer);
+//процедура заполнения переменной пользователем через консоль и вывода в файл(int)
+procedure tfUserInputThenOut(var f:Text;var variable:integer;var varName:string);
+//процедура заполнения переменной пользователем через консоль и вывода в файл(real)
+procedure tfUserInputThenOut(var f:Text;var variable:real;var varName:string);
+//процедура вывода переменной в файл
+procedure tfOutVar(var f:Text;var variable:real);
+
+
+implementation
+//Процедура для вывода текста в файл
+procedure tfOutAppend(var f:Text;var s:string);
+begin
+  Append(f);
+  Writeln(f,s);
+  Close(f);
+end;
+//Процедура для вывода текста и переменной в файл
+procedure tfOutAppendVar(var f:Text;var s:string;var variable:real);
+begin
+  Append(f);
+  Writeln(f,s,variable);
+  Close(f);
+end;
+//Процедура для вывода текста и переменной в файл(int)
+procedure tfOutAppendVar(var f:Text;var s:string;var variable:integer);
+begin
+  Append(f);
+  Writeln(f,s,variable);
+  Close(f);
+end;
+//Процедура для вывода ввода пользователя в файл
+procedure tfOutUserInput(var f:Text;var Input:Integer);
+begin
+  Append(f);
+  Writeln(f,'User Input: ',Input);
+  Close(f);
+end;
+//Процедура для вывода ввода пользователя в файл типа real
+procedure tfOutUserInput(var f:Text;var Input:Real);
+begin
+  Append(f);
+  Writeln(f,'User Input: ',Input);
+  Close(f);
+end;
+
+//процедура заполнения переменной пользователем через консоль и вывода в файл(int)
+procedure tfUserInputThenOut(var f:Text;var variable:integer;var varName:string);
+begin
+  Writeln('Enter ',varName,':');readln(variable);
+  Append(f);
+  Writeln(f,'User Input(',varName,'): ',variable);
+  Close(f);
+end;
+//процедура заполнения переменной пользователем через консоль и вывода в файл(real)
+procedure tfUserInputThenOut(var f:Text;var variable:real;var varName:string);
+begin
+  Writeln('Enter ',varName,':');readln(variable);
+  Append(f);
+  Writeln(f,'User Input(',varName,'): ',variable);
+  Close(f);
+end;
+//процедура вывода переменной в файл
+procedure tfOutVar(var f:Text;var variable:real);
+begin
+  Append(f);
+  Writeln(f,variable);
+  Close(f);
+end;
+
+
+end.

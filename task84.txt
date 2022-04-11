@@ -1,0 +1,36 @@
+Условие задачи:
+84 Даны натуральное n, действительное х. Вычислить: а) sin х + sin^2 х + ... + sin^n х;
+
+Код:
+program task84;
+uses TextOutUnit,Calculation;
+
+var
+  n:integer;
+  x,solution:real;
+  myFile:Text;
+  tmp:string;
+
+begin
+  //подключаю файл
+  assign(myFile,'task84.txt');
+  //Ввод пользователем нужных переменных
+  writeln('Enter x: '); readln(x);
+  writeln('Enter n: '); readln(n);
+  //решение задачи
+  solution := task(n,x);
+  //вывод в файл
+  
+  tfOutUserInput(myFile,x);
+  tfOutUserInput(myFile,n);
+  tmp := 'Result is ';
+  tfOutAppendVar(myFile,tmp,solution);
+  writeln('Done');
+  
+end.
+
+Вывод:
+
+User Input: 0.5
+User Input: 4
+Result is 0.8723

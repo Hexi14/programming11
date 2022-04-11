@@ -1,0 +1,69 @@
+Условие задачи:
+Даны натуральное число n, действительные числа a, b, (b > a > 0). Получить последовательность действительных числел y0, y1, ..., yn, где yi = √ xi, xi = a + ih, h = (b - a)/n.
+
+Code:
+program task157;
+uses TextOutUnit,ArrayUnit;
+
+//процедура вывода массива в файл до индекса(n)
+procedure ArrayRecIndex(var f:Text;const a:arrReal;Index:integer);
+begin
+  Append(f);
+  for var i:=1 to Index do writeln(f,'y[',i,']: ',a[i]:0:4);
+  close(f);
+end;
+
+function main(var a:real;var b:real;var n:integer):arrReal;
+var 
+  h:real;
+  y,x:arrReal;
+begin
+  h := (b-a)/n;                     
+  for var i:=1 to n do 
+  begin
+    x[i] := a + i*h;
+    y[i] := sqrt(x[i]);
+  end;
+  main := y;
+end;
+
+var
+  n:integer;
+  a,b:real;
+  myFile:Text;
+  tmp:string;
+  
+begin
+  //подключаю файл
+  assign(myFile,'task157.txt');
+  
+  //ввод переменных пользователем и вывод в файл
+  tmp := 'n';
+  tfUserInputThenOut(myFile,n,tmp);
+  repeat
+    tmp:= 'a';
+    tfUserInputThenOut(myFile,a,tmp);
+    tmp:= 'b';
+    tfUserInputThenOut(myFile,b,tmp);
+  until (b>a) and (a>0);
+  
+  
+  
+  tmp:= 'Result is  ';
+  tfOutAppend(myFile,tmp);
+  ArrayRecIndex(myFile,main(a,b,n),n);
+  writeln('done');
+  //надо еще фунции перекинуть в другие файлы, может назвать по другому
+  
+end.
+
+Вывод:
+
+User Input(n): 4
+User Input(a): 2
+User Input(b): 3
+Result is  
+y[1]: 1.5000
+y[2]: 1.5811
+y[3]: 1.6583
+y[4]: 1.7321

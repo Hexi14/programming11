@@ -1,0 +1,60 @@
+Условие задачи:
+178 Даны натуральные числа n, a 1...an. Определить количество членов ak последовательности a1,...,an:
+a) являющихся нечетными числами;
+
+Код:
+program task178;
+
+uses TextOutUnit,ArrayUnit;
+
+procedure main(var f:Text);
+var
+  tmp:string;
+  a:marr;
+  count,n:integer;
+begin
+  tmp:='n';
+  tfUserInputThenOut(f,n,tmp);  //процедура заполнения переменной пользователем через консоль и вывода в файл(int)
+  arrayFillRandom(a,n);         //процедура что запоняет массив до индекса  рандомно range(1,10)
+  for var i:=1 to n do
+  begin
+    if (a[i] mod 2) <> 0 then
+      count += 1;
+  end;
+  tmp:='Array: ';
+  tfOutAppend(f,tmp);          //вывод в файл текста
+  arrayRecIndex(f,a,n);        //процедура вывода массива в файл до индекса(n)
+  tmp:='Solution for a) is  ';
+  tfOutAppendVar(f,tmp,count); //вывод в файл текста и переменной
+  writeln('done');
+end;
+
+var
+  myFile:Text;
+
+begin
+  assign(myFile,'task178.txt');
+  main(myFile);
+end.
+
+Вывод:
+User Input(n): 3
+Array: 
+arr[1]: 9
+arr[2]: 3
+arr[3]: 4
+Solution for a) is  2
+
+User Input(n): 10
+Array: 
+arr[1]: 1
+arr[2]: 6
+arr[3]: 6
+arr[4]: 9
+arr[5]: 1
+arr[6]: 9
+arr[7]: 7
+arr[8]: 5
+arr[9]: 10
+arr[10]: 6
+Solution for a) is  6

@@ -1,0 +1,47 @@
+Условие задачи:
+77 Дано натуральное число n. Вычислить:
+
+Код:
+program task77;
+uses TextOutUnit;
+
+function fact(n: integer): longint; //функция нахождения факториала
+begin
+    if (n = 0) then
+        fact := 1
+    else
+        fact := n * fact(n - 1);
+end;
+
+procedure main(var f:Text); //процедура решения задания
+var 
+  n:integer;
+  tmp:string;
+  solution:integer;
+begin
+  tmp:='n';
+  tfUserInputThenOut(f,n,tmp); //процедура заполнения переменной пользователем через консоль и вывода в файл(int)
+  solution:= fact(n);
+  tmp:='Result for n! is';
+  tfOutAppendVar(f,tmp,solution); //Процедура для вывода текста и переменной в файл(int)
+  writeln('done');
+end;
+
+var
+  myFile:Text;
+
+begin
+  assign(myFile,'task77.txt'); //подключение файла
+  main(myFile);
+end.
+
+Вывод программы:
+
+User Input(n): 1
+Result for n! is 1
+User Input(n): 2
+Result for n! is 2
+User Input(n): 5
+Result for n! is 120
+User Input(n): 0
+Result for n! is 1

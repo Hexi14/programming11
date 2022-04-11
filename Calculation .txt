@@ -1,0 +1,23 @@
+﻿unit Calculation;
+
+interface
+//задача 84
+function task(n:integer;x:real):real;
+
+
+
+implementation
+//задача 84
+function task(n:integer;x:real):real;
+var
+  a:real;
+begin
+  a:=0;
+  for var i:=1 to n do a += (sin(x))**i;
+  task:=a;
+end;
+
+
+
+
+end.

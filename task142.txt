@@ -1,0 +1,53 @@
+Условие задачи:
+142 Вычислить значения многочлена x5 - 9x4 + 1.7x2 - 9.6 для x = 0, 1, ..., 5.
+
+Код:
+program task142;
+
+uses TextOutUnit;
+
+function calc(var x:integer):real; //функция вычисления многочлена
+begin
+  calc := x**5 - 9*x**4 + 1.7*x*1.7*x-9.6;
+end;
+
+procedure main(var f:Text); //сама задача
+var
+  solution:real;
+  tmp:integer;
+  tmp2:string;
+  
+begin
+  tmp2:='Result for x= ';
+  
+  for var i:=1 to 5 do
+  begin
+    tmp:=i;
+    solution := calc(tmp);
+    tfOutAppendVar(f,tmp2,tmp);//Процедура для вывода текста и переменной в файл(int)
+    tfOutVar(f,solution);      //процедура вывода переменной в файл
+  end;
+  
+  writeln('done');
+end;
+
+var
+  myFile:Text;
+
+begin
+  assign(myFile,'task142.txt'); //Подключаю текстовый файл
+  main(myFile); //сама задача
+end.
+
+Вывод программы:
+
+Result for x= 1
+-14.71
+Result for x= 2
+-110.04
+Result for x= 3
+-469.59
+Result for x= 4
+-1243.36
+Result for x= 5
+-2437.35
