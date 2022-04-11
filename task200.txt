@@ -1,0 +1,85 @@
+Условие задачи:
+Даны целые числа a, n, x1,...,xn(n > 0). Определить, каким по счету идёт в последовательности x1,...,xn член, равный a. Если такого члена нет, то ответом должно быть число 0.
+
+Код:
+program task200;
+uses TextOutUnit,ArrayUnit;
+
+var
+  a,n:integer;
+  x:marr;
+  myFile:Text;
+  tmp:string;
+  yes:integer;
+ 
+
+begin
+  //Подключаю файл
+  assign(myFile,'task200.txt');
+  
+  //Ввод пользователем переменных, с усл из задачи
+  repeat
+    writeln('Enter n: ');readln(n);
+  until n > 0;
+  writeln('Enter a: ');readln(a);
+  
+  //Вывод того что ввел пользователь и обьяснение 
+  tmp:='Array length: ';
+  tfOutAppend(myFile,tmp);
+  tfOutUserInput(myFile,n);
+  tmp:='Requaired number: ';
+  tfOutAppend(myFile,tmp);
+  tfOutUserInput(myFile,a);
+  
+  //Ручное заполнение массива до индекса(n)
+  arrFillIndex(x,n);
+  //Вывод полученного массива в файл
+  arrayRecIndex(myFile,x,n);
+  
+  //Задача
+  for var i:=1 to n do
+  begin
+    if a = x[i] then
+    begin
+      arrTfIndex(myFile,x,i); //вывод нужного индекса в файл
+      yes:=1; 
+    end;
+  end;
+    
+    (*else
+      if (i = n) and (a <> x[i])then
+      begin
+        tmp:='Answer is 0';
+        tfOutAppend(myFile,tmp); //если нет нужного индекса
+      end;
+  end;*)
+  if (yes <> 1) then
+  begin
+    tmp:='Answer is 0';
+    tfOutAppend(myFile,tmp); //если нет нужного индекса
+  end;
+  
+  writeln('Done');
+  
+end.
+
+Вывод:Array length: 
+User Input: 5
+Requaired number: 
+User Input: 7
+arr[1]: 7
+arr[2]: 6
+arr[3]: 5
+arr[4]: 4
+arr[5]: 1
+Required element in array[1]
+
+Array length: 
+User Input: 4
+Requaired number: 
+User Input: 1
+arr[1]: 1
+arr[2]: 2
+arr[3]: 3
+arr[4]: 4
+Required element in array[1]
